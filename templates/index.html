@@ -1,0 +1,80 @@
+{% extends "base.html" %} {% block content %}
+
+<h2>Select a WBC image</h2>
+
+
+    <form id="upload-file" method="post" enctype="multipart/form-data">
+        <label for="imageUpload" class="upload-label">
+            Choose...
+        </label>
+        <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg">
+        <select name="choose" id="choose">
+          <option value="count">Count</option>
+          <option value="classify">Classify</option>
+        </select>
+    </form>
+
+
+    <div class="image-section" style="display:none; width: 50%;height: 50%;float: left;">
+        <h4>Preview</h4>
+        <div class="img-preview">
+            <div id="imagePreview">
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary btn-lg " id="btn-predict">Get Result</button>
+        </div>
+    </div>
+
+    
+     <div style=" float: right;width: 50%; height: 50%" id="image">
+        <h3 id="confidence">Confidence</h3>
+        <table class="table" id="table">
+  <thead>
+    <tr>
+      <th scope="col">S.N</th>
+      <th scope="col">Eosinophil</th>
+      <th scope="col">Lymphocyte</th>
+      <th scope="col">Monocyte</th>
+      <th scope="col">Neutrophil</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td id = "eosino"></td>
+      <td id = "lympho"></td>
+      <td id = "mono"></td>
+      <td id = "neutro"></td>
+
+    </tr>
+
+  </tbody>
+</table>
+        <b><h3 id="result"><br>
+
+        <span> </span>
+        </h3>
+    </b> 
+
+
+        <div style="background-color: ; margin-left: -50%; margin-top: 9%" id = "process">
+        <img src="../static/blurG.png" id = "blur" style="height: 250px;width: 150px" />&nbsp
+        <img src="../static/claheNorm.png" id = "clahe"  style="height: 250px;width: 150px"/>&nbsp
+        <img src="../static/contrast_stretch_blurM.png" id="cont" style="height: 250px;width: 150px" />&nbsp
+        <img src="../static/edge.png" id="edge" style="height: 250px;width: 150px">&nbsp
+        <img src="../static/edgeM.png" id = "edgeM" style="height: 250px;width: 150px">
+      </div>
+      <br>
+        <h2 id = "count" style="margin-left: -35%"><br>
+        <span></span>
+        </h2>
+    </div>
+
+
+
+
+
+{% endblock %}
+
